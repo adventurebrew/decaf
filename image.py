@@ -1,10 +1,12 @@
 import png
 
+ORIG_BG = [0, 255, 255]
 
 s_map = {
     'BG1': 19,
     'BG2': 29
 }
+
 bg_map = {
     'BG1': [112, 146, 190],
     'BG2': [128, 128, 192]
@@ -22,8 +24,9 @@ def getBG(x):
     return x
 
 def save_image(filename, data, palette):
-    palette[s_map['BG1']] = bg_map['BG1']
-    palette[s_map['BG2']] = bg_map['BG2']
+    for k, v in s_map.iteritems():
+        palette[v] = bg_map[k]
+
     width, height, lines = data
 
     lines = [[getColor(x) for x in line] for line in lines]
@@ -39,8 +42,8 @@ def read_image(stream):
     size = r[3]['size']
     palette = list(r[3]['palette'])
 
-    palette[s_map['BG1']] = [0, 255, 255]
-    palette[s_map['BG2']] = [0, 255, 255]
+    for _, v in s_map.iteritems():
+        palette[v] = ORIG_BG
 
     width, height = size
 

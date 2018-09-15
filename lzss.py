@@ -56,3 +56,7 @@ def decompress(data, size):
         dstoff += 1
         srcoff += 1
     return res
+
+# TODOL implement lzss compression
+def compress(data, size):
+    pass

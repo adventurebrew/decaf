@@ -14,11 +14,11 @@ def getColor(x):
     if x in s_map:
         return s_map[x]
     return x
+
 def getBG(x):
-    if x == 19:
-        return 'BG1'
-    if x == 29:
-        return 'BG2'
+    b_map = {v: k for k, v in s_map.iteritems()}
+    if x in b_map:
+        return b_map[x]
     return x
 
 def save_image(filename, data, palette):
@@ -44,7 +44,5 @@ def read_image(stream):
 
     width, height = size
 
-    data = [list(line) for line in lines]
-    data = [[getBG(color) for color in line] for line in lines]
     data = [[getBG(color) for color in line] for line in lines]
     return width, height, data, palette

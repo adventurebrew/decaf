@@ -21,14 +21,13 @@ def mkcaf(name):
         width, height, data, palette = read_image(imFile)
 
     binPalette = ''.join(struct.pack('<B', x) for color in palette for x in color)
-    print palette
     im = []
     bg = ['BG1']
     h = height
     t = 0
     for line in data:
         t += 1
-        lvals = ['BG' if color in ['BG1', 'BG2'] else color for color in line]
+        lvals = ['BG' if color in BG else color for color in line]
         im.append(lvals)
         if h == height and line[-1:] != bg:
             h = t - 1

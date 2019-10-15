@@ -16,7 +16,7 @@ import sys
 from datetime import datetime
 
 frmt = '%H:%M:%S.%f'
-basetime = datetime(1900,1,1)
+basetime = datetime(1900, 1, 1)
 fps = 15
 
 if __name__ == '__main__':
